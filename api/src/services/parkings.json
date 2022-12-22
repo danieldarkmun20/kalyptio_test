@@ -1,0 +1,119 @@
+[
+  {
+    "id": 1,
+    "address": "Street A #35, California, CA",
+    "amenities": [
+      {
+        "description": "Camaras de vigilancia"
+      },
+      {
+        "description": "Cajon techado"
+      },
+      {
+        "description": "Departamento"
+      },
+      {
+        "description": "Planta baja"
+      },
+      {
+        "description": "Estacionamiento cerrado"
+      },
+      {
+        "description": "Lugar de bateria"
+      }
+    ],
+    "score": "4.3",
+    "type": "public",
+    "images": [
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      }
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis lorem tristique libero commodo convallis a vitae dui. Morbi at suscipit leo, a semper enim. Quisque id erat in massa eleifend vulputate. Etiam pulvinar, elit quis sagittis tempor, lacus nibh dapibus erat, luctus placerat odio risus a erat."
+  },
+  {
+    "id": 2,
+    "address": "Street 3 #35, California, CA",
+    "amenities": [
+      {
+        "description": "Camaras de vigilancia"
+      },
+      {
+        "description": "Cajon techado"
+      },
+      {
+        "description": "Planta baja"
+      },
+      {
+        "description": "Lugar de bateria"
+      }
+    ],
+    "score": "3.5",
+    "type": "private",
+    "images": [
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      }
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis lorem tristique libero commodo convallis a vitae dui. Morbi at suscipit leo, a semper enim. Quisque id erat in massa eleifend vulputate. Etiam pulvinar, elit quis sagittis tempor, lacus nibh dapibus erat, luctus placerat odio risus a erat."
+  },
+  {
+    "id": 3,
+    "address": "Street C #35, California, CA",
+    "amenities": [
+      {
+        "description": "Departamento"
+      },
+      {
+        "description": "Estacionamiento cerrado"
+      },
+      {
+        "description": "Lugar de bateria"
+      }
+    ],
+    "score": "4.7",
+    "type": "private",
+    "images": [
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      },
+      {
+        "path": "fake.png"
+      }
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis lorem tristique libero commodo convallis a vitae dui. Morbi at suscipit leo, a semper enim. Quisque id erat in massa eleifend vulputate. Etiam pulvinar, elit quis sagittis tempor, lacus nibh dapibus erat, luctus placerat odio risus a erat."
+  }
+]
