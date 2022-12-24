@@ -8,6 +8,7 @@ export type Amenity = {
     | "Estacionamiento cerrado"
     | "Lugar en bateria";
 };
+
 export type Image = {
   path: string;
 };
@@ -17,6 +18,8 @@ export interface Parking {
   amenities: Amenity[];
   score: string;
   type: Type;
+  price_total: string;
+  price_month: string;
   images: Image[];
   description: string;
 }
