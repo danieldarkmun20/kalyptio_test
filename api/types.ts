@@ -14,6 +14,8 @@ export interface Parking {
     type: Type;
     images : Image[];
     description: string;
+    price_total: string;
+    price_month: string;
 }
 
 export type NewParkingEntry = Omit<Parking, "id">

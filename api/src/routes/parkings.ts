@@ -11,7 +11,15 @@ router.get("/:id", (req, res) => {
   res.send(parkingsServices.getOne(Number(id)));
 });
 router.post("/", upload.array("images", 12), async (req, res) => {
-  const { address, amenities, score, type, description } = req.body;
+  const {
+    address,
+    amenities,
+    score,
+    type,
+    description,
+    price_total,
+    price_month,
+  } = req.body;
 
   const images = (req.files as Array<Express.Multer.File>).map((f) => {
     return {
@@ -26,6 +34,8 @@ router.post("/", upload.array("images", 12), async (req, res) => {
     type,
     images,
     description,
+    price_total,
+    price_month,
   };
   const newParking = parkingsServices.post(newParkingEntry);
   res.send(newParking);

@@ -2,6 +2,8 @@
   {
     "id": 1,
     "address": "Street A #35, California, CA",
+    "price_total" : "200", 
+    "price_month": "2000" ,
     "amenities": [
       {
         "description": "Camaras de vigilancia"
@@ -26,19 +28,19 @@
     "type": "public",
     "images": [
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       }
     ],
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis lorem tristique libero commodo convallis a vitae dui. Morbi at suscipit leo, a semper enim. Quisque id erat in massa eleifend vulputate. Etiam pulvinar, elit quis sagittis tempor, lacus nibh dapibus erat, luctus placerat odio risus a erat."
@@ -46,6 +48,8 @@
   {
     "id": 2,
     "address": "Street 3 #35, California, CA",
+    "price_total" : "200", 
+    "price_month": "2000" ,
     "amenities": [
       {
         "description": "Camaras de vigilancia"
@@ -64,19 +68,19 @@
     "type": "private",
     "images": [
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       }
     ],
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis lorem tristique libero commodo convallis a vitae dui. Morbi at suscipit leo, a semper enim. Quisque id erat in massa eleifend vulputate. Etiam pulvinar, elit quis sagittis tempor, lacus nibh dapibus erat, luctus placerat odio risus a erat."
@@ -84,6 +88,8 @@
   {
     "id": 3,
     "address": "Street C #35, California, CA",
+    "price_total" : "200", 
+    "price_month": "2000" ,
     "amenities": [
       {
         "description": "Departamento"
@@ -99,19 +105,19 @@
     "type": "private",
     "images": [
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       },
       {
-        "path": "fake.png"
+        "path": "build.jpg"
       }
     ],
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis lorem tristique libero commodo convallis a vitae dui. Morbi at suscipit leo, a semper enim. Quisque id erat in massa eleifend vulputate. Etiam pulvinar, elit quis sagittis tempor, lacus nibh dapibus erat, luctus placerat odio risus a erat."
