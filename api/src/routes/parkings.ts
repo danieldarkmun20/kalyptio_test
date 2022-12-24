@@ -14,7 +14,6 @@ router.post("/", upload.array("images", 12), async (req, res) => {
   const { address, amenities, score, type, description } = req.body;
 
   const images = (req.files as Array<Express.Multer.File>).map((f) => {
-    console.log(f)
     return {
       path: f.filename,
     };
