@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {useRouter} from "vue-router"
 import {
   DirectionsCarTwotone,
   BatteryChargingFullSharp,
@@ -12,12 +13,17 @@ import {
 } from "@vicons/fluent";
 import { StarTwotone } from "@vicons/antd";
 
+const router = useRouter();
+
 const props = defineProps({
   parking: {
     type: Object,
     required: true,
   },
 });
+const handleShow = () => {
+  router.push("/about")
+}
 </script>
 
 <template>
@@ -27,11 +33,12 @@ const props = defineProps({
       marginBottom: '10px',
     }"
     class="parking"
+    @click.prevent="handleShow"
   >
     <n-grid :x-gap="6" :cols="3">
       <n-gi>
         <n-carousel autoplay style="border-radius: 20px">
-          <img v-for="(img, index) in props.parking.images" :key="index" />
+          <img v-for="(img, index) in parking.images" :key="index"
           class="carousel-img" :src="`http://localhost:3000/images/${img.path}`"
           />
         </n-carousel>
