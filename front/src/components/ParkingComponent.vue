@@ -21,8 +21,8 @@ const props = defineProps({
     required: true,
   },
 });
-const handleShow = () => {
-  router.push("/about")
+const handleShow = (id: number) => {
+  router.push(`/detail/${id}`)
 }
 </script>
 
@@ -33,7 +33,7 @@ const handleShow = () => {
       marginBottom: '10px',
     }"
     class="parking"
-    @click.prevent="handleShow"
+    @click.prevent="handleShow(parking.id)"
   >
     <n-grid :x-gap="6" :cols="3">
       <n-gi>
@@ -62,7 +62,7 @@ const handleShow = () => {
             :key="index"
           >
             <div
-              v-if="amenity.description === 'Camaras de vigilancia'"
+              v-if="amenity === 'Camaras de vigilancia'"
               class="amenity"
             >
               <n-icon size="20" color="#fff">
@@ -70,26 +70,26 @@ const handleShow = () => {
               </n-icon>
               <p>Camaras de vigilancia</p>
             </div>
-            <div v-if="amenity.description === 'Cajon techado'" class="amenity">
+            <div v-if="amenity === 'Cajon techado'" class="amenity">
               <n-icon size="20" color="#fff">
                 <Umbrella24Filled />
               </n-icon>
               <p>Cajon techado</p>
             </div>
-            <div v-if="amenity.description === 'Departamento'" class="amenity">
+            <div v-if="amenity === 'Departamento'" class="amenity">
               <n-icon size="20" color="#fff">
                 <Building20Filled />
               </n-icon>
               <p>Departamento</p>
             </div>
-            <div v-if="amenity.description === 'Planta baja'" class="amenity">
+            <div v-if="amenity === 'Planta baja'" class="amenity">
               <n-icon size="20" color="#fff">
                 <MovingFilled />
               </n-icon>
               <p>Planta baja</p>
             </div>
             <div
-              v-if="amenity.description === 'Estacionamiento cerrado'"
+              v-if="amenity === 'Estacionamiento cerrado'"
               class="amenity"
             >
               <n-icon size="20" color="#fff">
@@ -98,7 +98,7 @@ const handleShow = () => {
               <p>Estacionamiento cerrado</p>
             </div>
             <div
-              v-if="amenity.description === 'Lugar en bateria'"
+              v-if="amenity === 'Lugar en bateria'"
               class="amenity"
             >
               <n-icon size="20" color="#fff">

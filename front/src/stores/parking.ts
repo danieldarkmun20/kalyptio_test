@@ -20,9 +20,15 @@ export const useParkingStore = defineStore("parking", () => {
   });
 
   const getAll = async () => {
-    const resp = await axios.get("http://localhost:3000/api/parkings");
+    const resp = await axios.get(`${url}/api/${module}`);
     const data = resp.data;
     parkings.value = data;
+  };
+
+  const getOne = async (id: number) => {
+    const resp = await axios.get(`${url}/api/${module}/${id}`);
+    const data = resp.data;
+    parking.value = data;
   };
 
   const post = async (filePath: HTMLInputElement | null) => {
@@ -32,8 +38,13 @@ export const useParkingStore = defineStore("parking", () => {
       fd.append("score", parking.value.score);
       fd.append("type", parking.value.type);
       fd.append("description", parking.value.description);
+      fd.append("price_total", parking.value.price_total);
+      fd.append("price_month", parking.value.price_month);
       parking.value.amenities.forEach((amenity, index) => {
-        fd.append(`amenities[${index}][description]`, amenity.description as string);
+        fd.append(
+          `amenities[${index}]`,
+          amenity as string
+        );
       });
       console.log(filePath?.files);
       if (filePath?.files !== null) {
@@ -52,6 +63,11 @@ export const useParkingStore = defineStore("parking", () => {
       console.log(data);
     }
   };
+  const deleteParking = async (id: number) => {
+    const resp = await axios.delete(`${url}/api/${module}/${id}`);
+    const data = await resp.data;
+    console.log(data);
+  };
 
   const clearAllData = () => {
     parking.value.address = "";
@@ -64,5 +80,5 @@ export const useParkingStore = defineStore("parking", () => {
     parking.value.price_month = "";
   };
 
-  return { parkings, parking, getAll, post, clearAllData };
+  return { parkings, parking, getAll, getOne, post, clearAllData, deleteParking};
 });

@@ -1,13 +1,11 @@
 export type Type = "private" | "public";
-export type Amenity = {
-  description:
-    | "Camaras de vigilancia"
-    | "Cajon techado"
-    | "Departamento"
-    | "Planta baja"
-    | "Estacionamiento cerrado"
-    | "Lugar en bateria";
-};
+export type Amenity =
+  | "Camaras de vigilancia"
+  | "Cajon techado"
+  | "Departamento"
+  | "Planta baja"
+  | "Estacionamiento cerrado"
+  | "Lugar en bateria";
 
 export type Image = {
   path: string;
