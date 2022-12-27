@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useRouter} from "vue-router"
+import { useRouter } from "vue-router";
 import {
   DirectionsCarTwotone,
   BatteryChargingFullSharp,
@@ -22,8 +22,8 @@ const props = defineProps({
   },
 });
 const handleShow = (id: number) => {
-  router.push(`/detail/${id}`)
-}
+  router.push(`/detail/${id}`);
+};
 </script>
 
 <template>
@@ -38,76 +38,78 @@ const handleShow = (id: number) => {
     <n-grid :x-gap="6" :cols="3">
       <n-gi>
         <n-carousel autoplay style="border-radius: 20px">
-          <img v-for="(img, index) in parking.images" :key="index"
-          class="carousel-img" :src="`http://localhost:3000/images/${img.path}`"
+          <img
+            v-for="(img, index) in parking.images"
+            :key="index"
+            class="carousel-img"
+            :src="`http://localhost:3000/images/${img.path}`"
           />
         </n-carousel>
       </n-gi>
-      <n-gi :span="2">
-        <div class="parking-info">
-          <n-ellipsis style="max-width: 100px"
-            ><strong>{{ props.parking.address }}</strong></n-ellipsis
-          >
-          <div class="score">
-            <n-icon size="40" color="#214881">
-              <StarTwotone />
-            </n-icon>
-            <p>{{ props.parking.score }}</p>
+      <n-gi :span="2" class="info">
+        <div>
+          <div class="parking-info">
+            <div class="address">
+              <strong>{{ props.parking.address }}</strong>
+            </div>
+            <div class="score">
+              <n-icon size="40" color="#214881">
+                <StarTwotone />
+              </n-icon>
+              <p>{{ props.parking.score }}</p>
+            </div>
           </div>
+          <n-divider style="margin: 5px 0px 10px 0px" />
+          <n-space style="gap: 0px" justify="space-between">
+            <template
+              v-for="(amenity, index) in props.parking.amenities"
+              :key="index"
+            >
+              <div
+                class="amenity-info"
+                v-if="amenity === 'Camaras de vigilancia'"
+              >
+                <n-icon size="30" color="#fff" class="amenity">
+                  <Video16Filled />
+                </n-icon>
+                <p>Camaras de vigilancia</p>
+              </div>
+              <div class="amenity-info" v-if="amenity === 'Cajon techado'">
+                <n-icon size="30" color="#fff" class="amenity">
+                  <Umbrella24Filled />
+                </n-icon>
+                <p>Cajon techado</p>
+              </div>
+              <div class="amenity-info" v-if="amenity === 'Departamento'">
+                <n-icon size="30" color="#fff" class="amenity">
+                  <Building20Filled />
+                </n-icon>
+                <p>Departamento</p>
+              </div>
+              <div class="amenity-info" v-if="amenity === 'Planta baja'">
+                <n-icon size="30" color="#fff" class="amenity">
+                  <MovingFilled />
+                </n-icon>
+                <p>Planta baja</p>
+              </div>
+              <div
+                class="amenity-info"
+                v-if="amenity === 'Estacionamiento cerrado'"
+              >
+                <n-icon size="30" color="#fff" class="amenity">
+                  <DirectionsCarTwotone />
+                </n-icon>
+                <p>Estacionamiento cerrado</p>
+              </div>
+              <div class="amenity-info" v-if="amenity === 'Lugar en bateria'">
+                <n-icon size="30" color="#fff" class="amenity">
+                  <BatteryChargingFullSharp />
+                </n-icon>
+                <p>Lugar en bateria</p>
+              </div>
+            </template>
+          </n-space>
         </div>
-        <n-divider style="margin: 5px 0px 10px 0px" />
-        <n-space style="gap: 0px" justify="space-between">
-          <template
-            v-for="(amenity, index) in props.parking.amenities"
-            :key="index"
-          >
-            <div
-              v-if="amenity === 'Camaras de vigilancia'"
-              class="amenity"
-            >
-              <n-icon size="20" color="#fff">
-                <Video16Filled />
-              </n-icon>
-              <p>Camaras de vigilancia</p>
-            </div>
-            <div v-if="amenity === 'Cajon techado'" class="amenity">
-              <n-icon size="20" color="#fff">
-                <Umbrella24Filled />
-              </n-icon>
-              <p>Cajon techado</p>
-            </div>
-            <div v-if="amenity === 'Departamento'" class="amenity">
-              <n-icon size="20" color="#fff">
-                <Building20Filled />
-              </n-icon>
-              <p>Departamento</p>
-            </div>
-            <div v-if="amenity === 'Planta baja'" class="amenity">
-              <n-icon size="20" color="#fff">
-                <MovingFilled />
-              </n-icon>
-              <p>Planta baja</p>
-            </div>
-            <div
-              v-if="amenity === 'Estacionamiento cerrado'"
-              class="amenity"
-            >
-              <n-icon size="20" color="#fff">
-                <DirectionsCarTwotone />
-              </n-icon>
-              <p>Estacionamiento cerrado</p>
-            </div>
-            <div
-              v-if="amenity === 'Lugar en bateria'"
-              class="amenity"
-            >
-              <n-icon size="20" color="#fff">
-                <BatteryChargingFullSharp />
-              </n-icon>
-              <p>Lugar en bateria</p>
-            </div>
-          </template>
-        </n-space>
         <div class="total">
           <p><sup>$</sup> {{ props.parking.price_month }}/Mes</p>
           {{ " " }}
@@ -120,11 +122,6 @@ const handleShow = (id: number) => {
 </template>
 
 <style scoped>
-.carousel-img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-}
 .parking {
   border-radius: 20px;
   margin-bottom: 20px;
@@ -136,7 +133,7 @@ const handleShow = (id: number) => {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
   transform: translateY(-3%);
   transition: all 400ms ease-out;
-  cursor: default;
+  cursor: pointer;
 }
 
 .parking-info {
@@ -171,13 +168,36 @@ const handleShow = (id: number) => {
 .total > span {
   color: #2e4874;
 }
-.amenity {
-  background-color: #012838;
-  border-radius: 50%;
-  padding: 5px;
-  display: flex;
-}
-.amenity > p {
+
+.amenity-info > p {
   display: none;
+}
+
+.address {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .address {
+    max-width: 100px;
+  }
+}
+@media (min-width: 600px) {
+  .amenity-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .amenity-info > p {
+    display: inline;
+    color: black;
+  }
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 </style>

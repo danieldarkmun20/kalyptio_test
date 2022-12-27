@@ -66,7 +66,6 @@ function handleValidateClick(e: MouseEvent) {
   e.preventDefault();
   formRef.value?.validate(async (errors) => {
     if (!errors) {
-      console.log("validate");
       await parkingStore.post(file_path.value);
       showModal.value = false;
     } else {

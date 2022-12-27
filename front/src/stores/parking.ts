@@ -46,7 +46,6 @@ export const useParkingStore = defineStore("parking", () => {
           amenity as string
         );
       });
-      console.log(filePath?.files);
       if (filePath?.files !== null) {
         for (let i = 0; i < filePath?.files?.length; ++i) {
           const file = filePath.files[i];
@@ -60,13 +59,12 @@ export const useParkingStore = defineStore("parking", () => {
         },
       });
       const data = await resp.data;
-      console.log(data);
+      parkings.value.push(data)
     }
   };
   const deleteParking = async (id: number) => {
     const resp = await axios.delete(`${url}/api/${module}/${id}`);
     const data = await resp.data;
-    console.log(data);
   };
 
   const clearAllData = () => {
