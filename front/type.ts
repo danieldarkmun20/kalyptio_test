@@ -10,6 +10,12 @@ export type Amenity =
 export type Image = {
   path: string;
 };
+export type Filter = {
+  amenities: Array<string>,
+  max_price: string,
+  min_price: string
+  type: string
+}
 export interface Parking {
   id: number;
   address: string;

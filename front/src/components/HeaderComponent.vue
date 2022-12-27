@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import {
-  Filter16Filled,
-} from "@vicons/fluent";
+import { Filter16Filled } from "@vicons/fluent";
+import { useParkingStore } from "../stores/parking";
+const parkingStore = useParkingStore();
 
 const isShowFilter = ref<boolean>(false);
 const showFilter = () => {
@@ -18,6 +18,9 @@ const optionsType = [
     value: "public",
   },
 ];
+const handleFilter = () => {
+  parkingStore.getAll()
+}
 </script>
 
 <template>
@@ -33,46 +36,39 @@ const optionsType = [
         <n-gi :span="2"><p>Filters</p></n-gi>
         <n-gi>
           <n-form-item label="Max Price" path="user.name">
-            <n-input-number clearable />
+            <n-input-number clearable v-model:value="parkingStore.filter.max_price" />
           </n-form-item>
         </n-gi>
         <n-gi>
           <n-form-item label="Min Price" path="user.name">
-            <n-input-number clearable />
+            <n-input-number clearable v-model:value="parkingStore.filter.min_price" />
           </n-form-item>
         </n-gi>
         <n-gi :span="2">
           <n-form-item label="Select Type" path="user.name">
-            <n-select :options="optionsType" />
+            <n-select :options="optionsType" v-model:value="parkingStore.filter.type" />
           </n-form-item>
         </n-gi>
         <n-gi>
-          <n-radio value="Camaras de vigilancia" name="basic-demo">
-            Camaras de vigilancia
-          </n-radio>
+          <n-checkbox-group v-model:value="parkingStore.filter.amenities">
+            <n-space item-style="display: flex;">
+              <n-checkbox
+                value="Camaras de vigilancia"
+                label="Camaras de vigilancia"
+              />
+              <n-checkbox value="Cajon techado" label="Cajon techado" />
+              <n-checkbox value="Departamento" label="Departamento" />
+              <n-checkbox value="Planta baja" label="Planta baja" />
+              <n-checkbox
+                value="Estacionamiento cerrado"
+                label="Estacionamiento cerrado"
+              />
+              <n-checkbox value="Lugar en bateria" label="Lugar en bateria" />
+            </n-space>
+          </n-checkbox-group>
         </n-gi>
         <n-gi>
-          <n-radio value="Cajon techado" name="basic-demo">
-            Cajon techado
-          </n-radio>
-        </n-gi>
-        <n-gi>
-          <n-radio value="Departamento" name="basic-demo">
-            Departamento
-          </n-radio>
-        </n-gi>
-        <n-gi>
-          <n-radio value="Planta baja" name="basic-demo"> Planta baja </n-radio>
-        </n-gi>
-        <n-gi>
-          <n-radio value="Estacionamiento cerrado" name="basic-demo">
-            Estacionamiento cerrado
-          </n-radio>
-        </n-gi>
-        <n-gi>
-          <n-radio value="Lugar en bateria" name="basic-demo">
-            Lugar en bateria
-          </n-radio>
+          <n-button type="info" @click.prevent="handleFilter">Filter</n-button>
         </n-gi>
       </n-grid>
     </n-card>

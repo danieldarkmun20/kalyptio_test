@@ -1,13 +1,19 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
-import type { NewParkingEntry, Parking, Type } from "type";
+import type { Filter, NewParkingEntry, Parking, Type } from "type";
 
 const url = "http://localhost:3000";
 const module = "parkings";
 
 export const useParkingStore = defineStore("parking", () => {
   const parkings = ref<Parking[]>([]);
+  const filter = ref<Filter>({
+    amenities: [],
+    max_price: "",
+    min_price: "",
+    type: "",
+  });
   const parking = ref<NewParkingEntry>({
     address: "",
     amenities: [],
@@ -20,9 +26,23 @@ export const useParkingStore = defineStore("parking", () => {
   });
 
   const getAll = async () => {
-    const resp = await axios.get(`${url}/api/${module}`);
-    const data = resp.data;
-    parkings.value = data;
+    if (
+      filter.value.amenities.length > 0 ||
+      filter.value.max_price !== "" ||
+      filter.value.min_price !== "" ||
+      filter.value.type !== ""
+    ) {
+      const resp = await axios.get(`${url}/api/${module}`, {
+        params: filter.value,
+      });
+      const data = resp.data;
+      parkings.value = data;
+    } else {
+      console.log(filter.value);
+      const resp = await axios.get(`${url}/api/${module}`);
+      const data = resp.data;
+      parkings.value = data;
+    }
   };
 
   const getOne = async (id: number) => {
@@ -41,10 +61,7 @@ export const useParkingStore = defineStore("parking", () => {
       fd.append("price_total", parking.value.price_total);
       fd.append("price_month", parking.value.price_month);
       parking.value.amenities.forEach((amenity, index) => {
-        fd.append(
-          `amenities[${index}]`,
-          amenity as string
-        );
+        fd.append(`amenities[${index}]`, amenity as string);
       });
       if (filePath?.files !== null) {
         for (let i = 0; i < filePath?.files?.length; ++i) {
@@ -59,7 +76,7 @@ export const useParkingStore = defineStore("parking", () => {
         },
       });
       const data = await resp.data;
-      parkings.value.push(data)
+      parkings.value.push(data);
     }
   };
   const deleteParking = async (id: number) => {
@@ -78,5 +95,14 @@ export const useParkingStore = defineStore("parking", () => {
     parking.value.price_month = "";
   };
 
-  return { parkings, parking, getAll, getOne, post, clearAllData, deleteParking};
+  return {
+    parkings,
+    parking,
+    filter,
+    getAll,
+    getOne,
+    post,
+    clearAllData,
+    deleteParking,
+  };
 });
